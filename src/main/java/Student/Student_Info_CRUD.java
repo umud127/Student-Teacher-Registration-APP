@@ -99,8 +99,24 @@ public class Student_Info_CRUD extends CRUD<Student> {
     }
 
     @Override
-    public void delete () {
-        //delete a Student
+    public void delete (int id) {
+        String query = "DELETE FROM " + getTableName() + " WHERE id = ?";
+
+        try (Connection conn = connect(getDatabaseName());
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setInt(1, id);
+
+            int affectedRows = pstmt.executeUpdate();
+            if (affectedRows > 0) {
+                System.out.println("✅ Məlumat silindi (ID: " + id + ")");
+            } else {
+                System.out.println("⚠️ Belə bir ID tapılmadı: " + id);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("❌ Xəta(delete): " + e.getMessage());
+        }
     }
 
     //Additional Methods

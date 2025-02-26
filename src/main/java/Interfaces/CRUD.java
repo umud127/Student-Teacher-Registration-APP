@@ -20,6 +20,8 @@ public abstract class CRUD<T> {
     //Methods For CRUD Processes
     public abstract void setStatementParams(PreparedStatement pstmt, T person) throws SQLException;
 
+    public abstract void delete(int id);
+
     public abstract String getTableName();
 
     public abstract String getDatabaseName();
