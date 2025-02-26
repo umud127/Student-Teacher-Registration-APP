@@ -2,25 +2,43 @@ package Teacher;
 
 import Interfaces.CRUD;
 
-public class Teacher_CRUD extends CRUD {
+import java.sql.PreparedStatement;
 
+public class Teacher_CRUD extends CRUD<Teacher> {
+
+    //abstract methods override (CRUD)
     @Override
-    protected void create() {
+    public void create(Teacher teacher) {
         //add a new Teacher
     }
 
     @Override
-    protected void read() {
+    public void setStatementParams(PreparedStatement pstmt, Teacher person) {
+
+    }
+
+    @Override
+    public void read() {
         //get a Teacher
     }
 
     @Override
-    protected void update() {
+    public void update(Teacher teacher) {
         //update a Teacher
     }
 
     @Override
-    protected void delete() {
+    public void delete() {
         //delete a Teacher
+    }
+
+    @Override
+    public String getTableName() {
+        return "teacher_info";
+    }
+
+    @Override
+    public String getDatabaseName() {
+        return "teacher";
     }
 }

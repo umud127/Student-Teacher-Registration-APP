@@ -1,12 +1,26 @@
 package Interfaces;
 
-public abstract class CRUD {
+import DB.DatabaseConnection;
 
-    protected abstract void create();
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
-    protected abstract void read();
+public abstract class CRUD<T> {
 
-    protected abstract void  update();
+    //abstract methods override (CRUD)
+    public abstract void create(T person) throws SQLException;
 
-    protected abstract void delete();
+    public abstract void read() ;
+
+    public abstract void update(T person) ;
+
+    public abstract void delete() ;
+
+    //Methods For CRUD Processes
+    public abstract void setStatementParams(PreparedStatement pstmt, T person) throws SQLException;
+
+    public abstract String getTableName();
+
+    public abstract String getDatabaseName();
 }
