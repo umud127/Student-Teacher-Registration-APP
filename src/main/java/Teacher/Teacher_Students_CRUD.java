@@ -23,7 +23,7 @@ public class Teacher_Students_CRUD extends CRUD {
     }
 
     @Override
-    public void delete() {
+    public void delete(int id) {
 
     }
 

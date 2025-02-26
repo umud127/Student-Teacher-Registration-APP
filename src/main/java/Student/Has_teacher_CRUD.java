@@ -37,7 +37,7 @@ public class Has_teacher_CRUD extends CRUD<Student> {
     }
 
     @Override
-    public void delete() {
+    public void delete(int id) {
 
     }
 

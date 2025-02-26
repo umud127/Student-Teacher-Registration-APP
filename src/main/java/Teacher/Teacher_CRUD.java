@@ -28,7 +28,7 @@ public class Teacher_CRUD extends CRUD<Teacher> {
     }
 
     @Override
-    public void delete() {
+    public void delete(int id) {
         //delete a Teacher
     }
 

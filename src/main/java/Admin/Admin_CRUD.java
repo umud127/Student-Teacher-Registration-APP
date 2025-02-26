@@ -23,7 +23,7 @@ public class Admin_CRUD extends CRUD<Admin> {
     }
 
     @Override
-    public void delete() {
+    public void delete(int id) {
         //delete a Admin
     }
 
@@ -35,11 +35,11 @@ public class Admin_CRUD extends CRUD<Admin> {
 
     @Override
     public String getTableName() {
-        return "";
+        return "admin_info";
     }
 
     @Override
     public String getDatabaseName() {
-        return "";
+        return "admin";
     }
 }

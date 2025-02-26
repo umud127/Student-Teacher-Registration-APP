@@ -1,8 +1,5 @@
 package Interfaces;
 
-import DB.DatabaseConnection;
-
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -15,12 +12,10 @@ public abstract class CRUD<T> {
 
     public abstract void update(T person) ;
 
-    public abstract void delete() ;
+    public abstract void delete(int id);
 
     //Methods For CRUD Processes
     public abstract void setStatementParams(PreparedStatement pstmt, T person) throws SQLException;
-
-    public abstract void delete(int id);
 
     public abstract String getTableName();
 
