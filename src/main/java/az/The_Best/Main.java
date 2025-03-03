@@ -1,23 +1,24 @@
 package az.The_Best;
 
-import Student.Student;
-import Student.Student_Info_CRUD;
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import java.io.IOException;
 
-import java.sql.SQLException;
+public class Main extends Application {
+    @Override
+    public void start(Stage primaryStage) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/gui/FirstScreen.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
 
-public class Main {
-    public static void main(String[] args) throws SQLException {
-        Student_Info_CRUD studentInfoCrud = new Student_Info_CRUD();
+        primaryStage.setTitle("Starter of Program");
+        primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
+        primaryStage.show();
+    }
 
-        studentInfoCrud.read();
-
-        System.out.println();
-
-        Student umud = new Student("Umud", "Shahmarov", "umudshahmarov@gmail.com", 19, 3);
-        studentInfoCrud.update(umud);
-
-        System.out.println();
-
-        studentInfoCrud.read();
+    public static void main(String[] args) {
+        launch(args);
     }
 }

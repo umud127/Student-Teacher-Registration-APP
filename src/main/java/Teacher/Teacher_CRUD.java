@@ -1,6 +1,6 @@
 package Teacher;
 
-import Interfaces.CRUD;
+import abstracts.CRUD;
 
 import java.sql.PreparedStatement;
 
@@ -30,6 +30,10 @@ public class Teacher_CRUD extends CRUD<Teacher> {
     @Override
     public void delete(int id) {
         //delete a Teacher
+    }
+
+    public void find(String email, String password) {
+
     }
 
     @Override

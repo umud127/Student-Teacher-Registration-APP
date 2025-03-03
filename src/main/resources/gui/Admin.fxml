@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #a782d9, #d1d092);;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="az.The_Best.controller.Student_Controller">
+   <children>
+      <Label layoutX="221.0" layoutY="14.0" style="-fx-font-size: 24px;" text="admin Panel" />
+      <Button fx:id="backButton" layoutX="27.0" layoutY="337.0" prefHeight="40.0" prefWidth="554.0" text="Back" />
+      <Line endX="-4.0" endY="150.5" layoutX="299.0" layoutY="139.0" startX="-4.0" startY="-15.5" stroke="#ff0057" />
+      <Label layoutX="109.0" layoutY="66.0" text="Sign In" textFill="#001aff">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="406.0" layoutY="66.0" text="Register" textFill="#1100ff">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Line endX="100.0" layoutX="147.0" layoutY="104.0" startX="-100.0" stroke="RED" />
+      <Line endX="100.0" layoutX="438.0" layoutY="103.0" startX="-100.0" stroke="RED" />
+      <TextField layoutX="114.0" layoutY="125.0" />
+      <Label layoutX="26.0" layoutY="125.0" text="Email" textFill="#001aff">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Line endX="113.0" layoutX="289.0" layoutY="49.0" startX="-100.0" stroke="RED" />
+      <Line endX="-3.5" endY="20.5" layoutX="192.0" layoutY="28.0" startX="-4.0" startY="-13.0" stroke="#ff0057" />
+      <Line endX="-3.5" endY="20.5" layoutX="406.0" layoutY="28.0" startX="-4.0" startY="-13.0" stroke="#ff0057" />
+      <Line endX="114.25" endY="0.2928924560546875" layoutX="288.0" layoutY="14.0" startX="-100.0" stroke="RED" />
+      <Label layoutX="26.0" layoutY="159.0" text="Password" textFill="#001aff">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="114.0" layoutY="159.0" />
+      <TextField layoutX="411.0" layoutY="125.0" />
+      <Label layoutX="323.0" layoutY="125.0" text="Name" textFill="#001aff">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="323.0" layoutY="159.0" text="Surname" textFill="#001aff">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="411.0" layoutY="159.0" />
+      <Label layoutX="323.0" layoutY="193.0" text="Age" textFill="#001aff">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="411.0" layoutY="193.0" />
+      <Label layoutX="323.0" layoutY="227.0" text="Email" textFill="#001aff">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="411.0" layoutY="227.0" />
+      <Label layoutX="323.0" layoutY="261.0" text="Password" textFill="#001aff">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TextField layoutX="411.0" layoutY="261.0" />
+      <Button layoutX="27.0" layoutY="297.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="264.0" style="-fx-background-color: #81d67e;" text="Sign In" />
+      <Button layoutX="299.0" layoutY="297.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="281.0" style="-fx-background-color: #81d67e;" text="Register" />
+   </children>
+</AnchorPane>

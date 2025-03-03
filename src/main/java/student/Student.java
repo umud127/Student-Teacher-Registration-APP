@@ -1,4 +1,4 @@
-package Student;
+package student;
 
 public class Student {
 
@@ -7,21 +7,22 @@ public class Student {
     private String firstName;       //NN
     private String lastName;        //NN
     private int age;                //NN
+    private String email;
+    private String password;
 
     //values student can have
     private boolean hasTeacher;     //auto false
-
-    private String email;           //auto null
     private String teacherName;     //auto null
 
     //constructor for creating
-    public Student(String firstName, String lastName, String email, int age, boolean hasTeacher, String teacherName) {
+    public Student(String firstName, String lastName, String email, int age, boolean hasTeacher, String teacherName,String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.age = age;
         this.hasTeacher = hasTeacher;
         this.teacherName = teacherName;
+        this.password = password;
     }
 
     //constructor for update 1 (Student_Info_CRUD)
@@ -96,5 +97,13 @@ public class Student {
 
     public void setTeacherName(String teacherName) {
         this.teacherName = teacherName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

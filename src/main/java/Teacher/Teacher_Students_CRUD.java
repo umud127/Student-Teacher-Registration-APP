@@ -1,6 +1,6 @@
 package Teacher;
 
-import Interfaces.CRUD;
+import abstracts.CRUD;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -24,6 +24,10 @@ public class Teacher_Students_CRUD extends CRUD {
 
     @Override
     public void delete(int id) {
+
+    }
+
+    public void find(String email, String password) {
 
     }
 

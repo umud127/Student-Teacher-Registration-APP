@@ -1,10 +1,11 @@
-package Student;
+package student;
 
-import Interfaces.CRUD;
+import abstracts.CRUD;
 
 import java.sql.*;
+import java.util.Arrays;
 
-import static DB.DatabaseConnection.connect;
+import static db.DatabaseConnection.connect;
 
 public class Student_Info_CRUD extends CRUD<Student> {
 
@@ -15,6 +16,7 @@ public class Student_Info_CRUD extends CRUD<Student> {
         pstmt.setString(2, student.getLastName());
         pstmt.setString(3, student.getEmail());
         pstmt.setInt(4, student.getAge());
+        pstmt.setString(5,student.getPassword());
     }
 
     @Override
@@ -22,7 +24,18 @@ public class Student_Info_CRUD extends CRUD<Student> {
         try (Connection conn = connect(getDatabaseName())) {
             conn.setAutoCommit(false); // Transaction başlat
 
-            String query = "INSERT INTO " + getTableName() + " (first_name, last_name, email, age) VALUES (?, ?, ?, ?)";
+            // 1️⃣ Əvvəlcədən sonuncu ID-ni tap
+            int lastID = 0;
+            String getLastID = "SELECT MAX(id) FROM " + getTableName();
+
+            try (Statement stmt = conn.createStatement();
+                 ResultSet rs = stmt.executeQuery(getLastID)) {
+                if (rs.next()) {
+                    lastID = rs.getInt(1); // 🔥 Sonuncu uğurlu ID
+                }
+            }
+
+            String query = "INSERT INTO " + getTableName() + " (first_name, last_name, email, age,password) VALUES (?, ?, ?, ?, ?)";
 
             try (PreparedStatement pstmt = conn.prepareStatement(query)) {
                 // Student məlumatını əlavə et
@@ -38,6 +51,15 @@ public class Student_Info_CRUD extends CRUD<Student> {
             } catch (SQLException e) {
                 conn.rollback(); // ❌ Xəta baş verərsə, AUTO_INCREMENT geri alınır
                 System.out.println("❌ Xəta(create): " + e.getMessage());
+
+                // 2️⃣ `AUTO_INCREMENT`-i əvvəlki dəyərə qaytar
+                String resetAutoIncrement = "ALTER TABLE " + getTableName() + " AUTO_INCREMENT = ?";
+                try (PreparedStatement resetStmt = conn.prepareStatement(resetAutoIncrement)) {
+                    resetStmt.setInt(1, lastID + 1); // 🔥 Sonuncu uğurlu ID + 1
+                    resetStmt.executeUpdate();
+                    System.out.println("🔄 AUTO_INCREMENT bərpa olundu: " + (lastID + 1));
+                }
+
                 System.out.println("Save edilmədi və auto-increament işləmədi");
             } finally {
                 conn.setAutoCommit(true); // 🔄 Safe mode-a qayıdırıq
@@ -117,6 +139,36 @@ public class Student_Info_CRUD extends CRUD<Student> {
         } catch (SQLException e) {
             System.out.println("❌ Xəta(delete): " + e.getMessage());
         }
+    }
+
+    public Student find(String email, String password) {
+        String query = "SELECT * FROM student_info WHERE email = ? AND password = ?";
+
+        Student student = null;
+
+        try (PreparedStatement pstmt = connect(getDatabaseName()).prepareStatement(query)) {
+
+            pstmt.setString(1, email);
+            pstmt.setString(2, password);
+
+            ResultSet rs = pstmt.executeQuery();
+
+            while (rs.next()) {
+                int id = rs.getInt("id");
+                String firstName = rs.getString("first_name");
+                String lastName = rs.getString("last_name");
+                int age = rs.getInt("age");
+                Timestamp timestamp = rs.getTimestamp("registration_date");
+
+                Has_teacher_CRUD hasTeacherCrud = new Has_teacher_CRUD();
+
+                student = new Student(firstName, lastName, email,age, hasTeacherCrud.find(id).getHasTeacher(), hasTeacherCrud.find(id).getTeacherName(),password);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error msg: " + Arrays.toString(e.getStackTrace()));
+        }
+
+        return student;
     }
 
     //Additional Methods

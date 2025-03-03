@@ -1,6 +1,6 @@
-package Admin;
+package admin;
 
-import Interfaces.CRUD;
+import abstracts.CRUD;
 
 import java.sql.PreparedStatement;
 
@@ -25,6 +25,11 @@ public class Admin_CRUD extends CRUD<Admin> {
     @Override
     public void delete(int id) {
         //delete a Admin
+    }
+
+
+    public void find(String email, String password) {
+
     }
 
     //Methods help CRUD Methods

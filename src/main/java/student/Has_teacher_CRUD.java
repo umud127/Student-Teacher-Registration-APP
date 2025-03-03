@@ -1,10 +1,11 @@
-package Student;
+package student;
 
-import DB.DatabaseConnection;
-import Interfaces.CRUD;
+import db.DatabaseConnection;
+import abstracts.CRUD;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class Has_teacher_CRUD extends CRUD<Student> {
@@ -39,6 +40,29 @@ public class Has_teacher_CRUD extends CRUD<Student> {
     @Override
     public void delete(int id) {
 
+    }
+
+    public Student find(int id) {
+        String query = "select * from has_teacher where id = ?";
+
+        Student student = null;
+
+        try (Connection conn = DatabaseConnection.connect(getDatabaseName());
+             PreparedStatement pstmt = conn.prepareStatement(query)) {
+
+            pstmt.setInt(1, id); // ✅ Əvvəlcə parametri təyin edirik
+            try (ResultSet rs = pstmt.executeQuery()) { // ✅ Sonra executeQuery çağırılır
+                if (rs.next()) { // ✅ `rs` ilk sətrə keçməlidir
+                    student = new Student(rs.getBoolean("has_teacher"), rs.getString("teacher_name"), id);
+                } else {
+                    System.out.println("⚠️ Xəbərdarlıq: `id` bazada tapılmadı -> " + id);
+                }
+            }
+        } catch (SQLException e) {
+            System.out.println("❌ Xəta(find): " + e.getMessage());
+        }
+
+        return student;
     }
 
     //Additional Methods
