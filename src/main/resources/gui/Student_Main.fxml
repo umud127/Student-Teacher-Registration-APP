@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="az.The_Best.controller.Student_Main_Controller"
-            prefHeight="400.0" prefWidth="600.0">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(to right, #a782d9, #d1d092);;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="az.The_Best.controller.Student_Main_Controller">
+   <VBox fx:id="sideMenu" prefHeight="400.0" prefWidth="100.0">
+      <Button mnemonicParsing="false" prefHeight="103.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, #a782d9, #d1d092);;" text="Home" />
+      <Line endX="-0.2071075439453125" endY="0.7928932309150696" startX="-100.0" />
+      <Button mnemonicParsing="false" prefHeight="103.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, #a782d9, #d1d092);;" text="Change Info" />
+      <Line endX="-0.2071075439453125" endY="0.7928932309150696" startX="-100.0" />
+      <Button mnemonicParsing="false" prefHeight="103.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, #a782d9, #d1d092);;" text="Find Teacher" />
+      <Line endX="-0.2071075439453125" endY="0.7928932309150696" startX="-100.0" />
+      <Button mnemonicParsing="false" prefHeight="103.0" prefWidth="100.0" style="-fx-background-color: linear-gradient(to right, #a782d9, #d1d092);;" text="Log Out" />
+   </VBox>
+   <Text fill="RED" layoutX="167.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 40;" text="Student Panel" wrappingWidth="266.517578125" />
+   <Line endX="100.0" endY="312.0" layoutX="375.0" layoutY="88.0" startX="100.0" startY="-88.0" />
+   <Line endX="273.5" layoutX="201.0" layoutY="101.0" startX="-100.0" />
+   <ImageView fitHeight="89.0" fitWidth="100.0" layoutX="486.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+   <Text layoutX="248.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30;" text="News" />
+   <ScrollPane layoutX="114.0" layoutY="151.0" prefHeight="200.0" prefWidth="200.0">
+      <content>
+         <AnchorPane fx:id="news" minHeight="0.0" minWidth="0.0" prefHeight="238.0" prefWidth="350.0" />
+      </content>
+   </ScrollPane>
+   <Text layoutX="511.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="name" />
+   <Text layoutX="498.0" layoutY="192.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="surname" />
+   <Text layoutX="508.0" layoutY="258.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" text="email" />
+   <Text fx:id="student_name" layoutX="495.0" layoutY="156.0" strokeType="OUTSIDE" strokeWidth="0.0" text="student name" />
+   <Text fx:id="student_surname" layoutX="491.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" text="student_surname" />
+   <Text fx:id="student_email" layoutX="491.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="student_email" />
 </AnchorPane>

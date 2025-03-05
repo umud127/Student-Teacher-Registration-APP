@@ -1,5 +1,6 @@
 package az.The_Best.controller;
 
+import javafx.scene.control.Alert;
 import student.Student;
 import student.Student_Info_CRUD;
 import javafx.fxml.FXML;
@@ -83,8 +84,6 @@ public class Student_Controller {
         stage.setTitle("Student Panel");
         stage.setScene(new Scene(root));
         stage.setResizable(false);
-//        stage.setMaximized(true);
-        stage.setFullScreen(true);
         stage.show();
         System.out.println("New Window is opened");
     }
@@ -96,7 +95,6 @@ public class Student_Controller {
         Student student = studentInfoCrud.find(sign_email.getText(), sign_password.getText());
 
         if(student != null) {
-            System.out.println("it works in sign method");
             // Cari pəncərəni bağlayır
             Stage currentStage = (Stage) btn_sign.getScene().getWindow();
             currentStage.close();
@@ -115,14 +113,16 @@ public class Student_Controller {
             stage.setTitle("Student Panel");
             stage.setScene(new Scene(root));
             stage.setResizable(false);
-//        stage.setMaximized(true);
-            stage.setFullScreen(true);
             stage.show();
             System.out.println("New Window is opened");
         }
         else {
             System.out.println("its null");
-            //send a message window it's not found
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Xəta");
+            alert.setHeaderText("error exist");
+            alert.setContentText("not found u wanna register?");
+            alert.showAndWait();
         }
     }
 }
