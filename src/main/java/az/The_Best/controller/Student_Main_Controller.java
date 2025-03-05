@@ -2,13 +2,10 @@ package az.The_Best.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import student.Student;
-import student.Student_Info_CRUD;
 
 public class Student_Main_Controller {
 
@@ -17,8 +14,7 @@ public class Student_Main_Controller {
     public Text student_name;
     public AnchorPane news;
     public VBox sideMenu;
-    @FXML
-    private ImageView profileImage;
+
     @FXML
     private Label nameLabel;
     @FXML
@@ -28,6 +24,14 @@ public class Student_Main_Controller {
     @FXML
     private Label emailLabel;
 
-    private final Student_Info_CRUD studentCrud = new Student_Info_CRUD();
+    private Student student;
 
+    public void setStudent(Student student) {
+        this.student = student;
+
+        // Tələbə məlumatlarını ekranda göstər
+        student_name.setText(student.getFirstName());
+        student_surname.setText(student.getLastName());
+        student_email.setText(student.getEmail());
+    }
 }

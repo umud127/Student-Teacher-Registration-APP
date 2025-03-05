@@ -90,34 +90,34 @@ public class Student_Controller {
 
     @FXML
     public void sign() {
-
         Student_Info_CRUD studentInfoCrud = new Student_Info_CRUD();
         Student student = studentInfoCrud.find(sign_email.getText(), sign_password.getText());
 
-        if(student != null) {
-            // Cari pəncərəni bağlayır
+        if (student != null) {
+            // Cari pəncərəni bağla
             Stage currentStage = (Stage) btn_sign.getScene().getWindow();
             currentStage.close();
             System.out.println("The Window Closed");
 
-            // Yeni pəncərə açır (Student_Cabinet)
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Student_Main.fxml"));
-            Parent root = null;
             try {
-                root = loader.load();
+                // Yeni səhifəni yüklə
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/Student_Main.fxml"));
+                Parent root = loader.load();
+
+                // Controller-i al və `setStudent()` metodunu çağır
+                Student_Main_Controller controller = loader.getController();
+                controller.setStudent(student);
+
+                Stage stage = new Stage();
+                stage.setTitle("Student Panel");
+                stage.setScene(new Scene(root));
+                stage.setResizable(false);
+                stage.show();
+                System.out.println("New Window is opened");
             } catch (IOException e) {
                 System.out.println("Error msg: " + Arrays.toString(e.getStackTrace()));
-                return;
             }
-            Stage stage = new Stage();
-            stage.setTitle("Student Panel");
-            stage.setScene(new Scene(root));
-            stage.setResizable(false);
-            stage.show();
-            System.out.println("New Window is opened");
-        }
-        else {
-            System.out.println("its null");
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Xəta");
             alert.setHeaderText("error exist");

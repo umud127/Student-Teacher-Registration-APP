@@ -21,7 +21,7 @@
    <Text fill="RED" layoutX="167.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 40;" text="Student Panel" wrappingWidth="266.517578125" />
    <Line endX="100.0" endY="312.0" layoutX="375.0" layoutY="88.0" startX="100.0" startY="-88.0" />
    <Line endX="273.5" layoutX="201.0" layoutY="101.0" startX="-100.0" />
-   <ImageView fitHeight="89.0" fitWidth="100.0" layoutX="486.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+   <ImageView fx:id="profileImage" fitHeight="89.0" fitWidth="100.0" layoutX="486.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
    <Text layoutX="248.0" layoutY="139.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 30;" text="News" />
    <ScrollPane layoutX="114.0" layoutY="151.0" prefHeight="200.0" prefWidth="200.0">
       <content>
